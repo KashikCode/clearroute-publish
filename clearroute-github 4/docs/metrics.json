@@ -1,0 +1,543 @@
+{
+  "selected": "Balanced bigram SVM",
+  "source_url": "https://files.consumerfinance.gov/f/documents/CCDB_Export_20_July_2026.zip",
+  "archive_url": "https://www.consumerfinance.gov/foia-requests/foia-electronic-reading-room/cfpb-consumer-complaint-database-narratives-archive/",
+  "source_sha256": "aafebbaaf0962c3d29532411ac2133c01bae830b7ea6ed1931a6e42278437d18",
+  "trained_at": "2026-10-12",
+  "data_period": "July 2026",
+  "total": 9307,
+  "train": 6514,
+  "validation": 1396,
+  "test": 1397,
+  "duplicates_removed": 690,
+  "empty_or_short_removed": 662039,
+  "features": 24000,
+  "labels": [
+    "Checking or savings account",
+    "Credit card",
+    "Credit reporting or other personal consumer reports",
+    "Debt collection",
+    "Debt or credit management",
+    "Money transfer, virtual currency, or money service",
+    "Mortgage",
+    "Payday loan, title loan, personal loan, or advance loan",
+    "Prepaid card",
+    "Student loan",
+    "Vehicle loan or lease"
+  ],
+  "counts": {
+    "Debt collection": 2205,
+    "Payday loan, title loan, personal loan, or advance loan": 406,
+    "Vehicle loan or lease": 508,
+    "Checking or savings account": 2024,
+    "Credit card": 1808,
+    "Student loan": 310,
+    "Money transfer, virtual currency, or money service": 779,
+    "Credit reporting or other personal consumer reports": 315,
+    "Mortgage": 728,
+    "Prepaid card": 134,
+    "Debt or credit management": 90
+  },
+  "baselines": [
+    {
+      "name": "Majority class",
+      "accuracy": 0.23693629205440228,
+      "macro_f1": 0.034827441077441075,
+      "report": {
+        "Checking or savings account": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 304.0
+        },
+        "Credit card": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 272.0
+        },
+        "Credit reporting or other personal consumer reports": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 48.0
+        },
+        "Debt collection": {
+          "precision": 0.23693629205440228,
+          "recall": 1.0,
+          "f1-score": 0.38310185185185186,
+          "support": 331.0
+        },
+        "Debt or credit management": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 13.0
+        },
+        "Money transfer, virtual currency, or money service": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 117.0
+        },
+        "Mortgage": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 109.0
+        },
+        "Payday loan, title loan, personal loan, or advance loan": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 61.0
+        },
+        "Prepaid card": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 20.0
+        },
+        "Student loan": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 46.0
+        },
+        "Vehicle loan or lease": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 76.0
+        },
+        "accuracy": 0.23693629205440228,
+        "macro avg": {
+          "precision": 0.02153966291403657,
+          "recall": 0.09090909090909091,
+          "f1-score": 0.034827441077441075,
+          "support": 1397.0
+        },
+        "weighted avg": {
+          "precision": 0.056138806492489014,
+          "recall": 0.23693629205440228,
+          "f1-score": 0.09077073225695273,
+          "support": 1397.0
+        }
+      }
+    },
+    {
+      "name": "Unigram SVM",
+      "validation_macro_f1": 0.7176266897749318,
+      "accuracy": 0.7859699355762347,
+      "macro_f1": 0.6850986432713961,
+      "report": {
+        "Checking or savings account": {
+          "precision": 0.7387387387387387,
+          "recall": 0.8092105263157895,
+          "f1-score": 0.7723704866562009,
+          "support": 304.0
+        },
+        "Credit card": {
+          "precision": 0.7653061224489796,
+          "recall": 0.8272058823529411,
+          "f1-score": 0.7950530035335689,
+          "support": 272.0
+        },
+        "Credit reporting or other personal consumer reports": {
+          "precision": 0.7083333333333334,
+          "recall": 0.7083333333333334,
+          "f1-score": 0.7083333333333334,
+          "support": 48.0
+        },
+        "Debt collection": {
+          "precision": 0.8765060240963856,
+          "recall": 0.879154078549849,
+          "f1-score": 0.8778280542986425,
+          "support": 331.0
+        },
+        "Debt or credit management": {
+          "precision": 1.0,
+          "recall": 0.15384615384615385,
+          "f1-score": 0.26666666666666666,
+          "support": 13.0
+        },
+        "Money transfer, virtual currency, or money service": {
+          "precision": 0.6226415094339622,
+          "recall": 0.5641025641025641,
+          "f1-score": 0.5919282511210763,
+          "support": 117.0
+        },
+        "Mortgage": {
+          "precision": 0.8584070796460177,
+          "recall": 0.8899082568807339,
+          "f1-score": 0.8738738738738738,
+          "support": 109.0
+        },
+        "Payday loan, title loan, personal loan, or advance loan": {
+          "precision": 0.7755102040816326,
+          "recall": 0.6229508196721312,
+          "f1-score": 0.6909090909090909,
+          "support": 61.0
+        },
+        "Prepaid card": {
+          "precision": 0.8,
+          "recall": 0.2,
+          "f1-score": 0.32,
+          "support": 20.0
+        },
+        "Student loan": {
+          "precision": 0.9736842105263158,
+          "recall": 0.8043478260869565,
+          "f1-score": 0.8809523809523809,
+          "support": 46.0
+        },
+        "Vehicle loan or lease": {
+          "precision": 0.7532467532467533,
+          "recall": 0.7631578947368421,
+          "f1-score": 0.7581699346405228,
+          "support": 76.0
+        },
+        "accuracy": 0.7859699355762347,
+        "macro avg": {
+          "precision": 0.8065794523229198,
+          "recall": 0.6565652123524813,
+          "f1-score": 0.6850986432713961,
+          "support": 1397.0
+        },
+        "weighted avg": {
+          "precision": 0.7885619996590806,
+          "recall": 0.7859699355762347,
+          "f1-score": 0.7804444053539693,
+          "support": 1397.0
+        }
+      }
+    },
+    {
+      "name": "Bigram SVM",
+      "validation_macro_f1": 0.711433783218901,
+      "accuracy": 0.8024337866857552,
+      "macro_f1": 0.6875667126427464,
+      "report": {
+        "Checking or savings account": {
+          "precision": 0.7514792899408284,
+          "recall": 0.8355263157894737,
+          "f1-score": 0.7912772585669782,
+          "support": 304.0
+        },
+        "Credit card": {
+          "precision": 0.7759197324414716,
+          "recall": 0.8529411764705882,
+          "f1-score": 0.8126094570928196,
+          "support": 272.0
+        },
+        "Credit reporting or other personal consumer reports": {
+          "precision": 0.8,
+          "recall": 0.75,
+          "f1-score": 0.7741935483870968,
+          "support": 48.0
+        },
+        "Debt collection": {
+          "precision": 0.8902439024390244,
+          "recall": 0.8821752265861027,
+          "f1-score": 0.8861911987860395,
+          "support": 331.0
+        },
+        "Debt or credit management": {
+          "precision": 1.0,
+          "recall": 0.15384615384615385,
+          "f1-score": 0.26666666666666666,
+          "support": 13.0
+        },
+        "Money transfer, virtual currency, or money service": {
+          "precision": 0.6728971962616822,
+          "recall": 0.6153846153846154,
+          "f1-score": 0.6428571428571429,
+          "support": 117.0
+        },
+        "Mortgage": {
+          "precision": 0.868421052631579,
+          "recall": 0.908256880733945,
+          "f1-score": 0.8878923766816144,
+          "support": 109.0
+        },
+        "Payday loan, title loan, personal loan, or advance loan": {
+          "precision": 0.7555555555555555,
+          "recall": 0.5573770491803278,
+          "f1-score": 0.6415094339622641,
+          "support": 61.0
+        },
+        "Prepaid card": {
+          "precision": 1.0,
+          "recall": 0.1,
+          "f1-score": 0.18181818181818182,
+          "support": 20.0
+        },
+        "Student loan": {
+          "precision": 0.975,
+          "recall": 0.8478260869565217,
+          "f1-score": 0.9069767441860465,
+          "support": 46.0
+        },
+        "Vehicle loan or lease": {
+          "precision": 0.7662337662337663,
+          "recall": 0.7763157894736842,
+          "f1-score": 0.7712418300653595,
+          "support": 76.0
+        },
+        "accuracy": 0.8024337866857552,
+        "macro avg": {
+          "precision": 0.841431863227628,
+          "recall": 0.6617862994928556,
+          "f1-score": 0.6875667126427464,
+          "support": 1397.0
+        },
+        "weighted avg": {
+          "precision": 0.8075376699323717,
+          "recall": 0.8024337866857552,
+          "f1-score": 0.7950133184818923,
+          "support": 1397.0
+        }
+      }
+    },
+    {
+      "name": "Balanced bigram SVM",
+      "validation_macro_f1": 0.7374217479885462,
+      "accuracy": 0.8081603435934145,
+      "macro_f1": 0.7223846745725929,
+      "report": {
+        "Checking or savings account": {
+          "precision": 0.7915309446254072,
+          "recall": 0.7993421052631579,
+          "f1-score": 0.795417348608838,
+          "support": 304.0
+        },
+        "Credit card": {
+          "precision": 0.8013698630136986,
+          "recall": 0.8602941176470589,
+          "f1-score": 0.8297872340425532,
+          "support": 272.0
+        },
+        "Credit reporting or other personal consumer reports": {
+          "precision": 0.6307692307692307,
+          "recall": 0.8541666666666666,
+          "f1-score": 0.7256637168141593,
+          "support": 48.0
+        },
+        "Debt collection": {
+          "precision": 0.9161290322580645,
+          "recall": 0.8580060422960725,
+          "f1-score": 0.8861154446177847,
+          "support": 331.0
+        },
+        "Debt or credit management": {
+          "precision": 1.0,
+          "recall": 0.15384615384615385,
+          "f1-score": 0.26666666666666666,
+          "support": 13.0
+        },
+        "Money transfer, virtual currency, or money service": {
+          "precision": 0.65,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.6582278481012658,
+          "support": 117.0
+        },
+        "Mortgage": {
+          "precision": 0.8620689655172413,
+          "recall": 0.9174311926605505,
+          "f1-score": 0.8888888888888888,
+          "support": 109.0
+        },
+        "Payday loan, title loan, personal loan, or advance loan": {
+          "precision": 0.7307692307692307,
+          "recall": 0.6229508196721312,
+          "f1-score": 0.672566371681416,
+          "support": 61.0
+        },
+        "Prepaid card": {
+          "precision": 0.8888888888888888,
+          "recall": 0.4,
+          "f1-score": 0.5517241379310345,
+          "support": 20.0
+        },
+        "Student loan": {
+          "precision": 0.9285714285714286,
+          "recall": 0.8478260869565217,
+          "f1-score": 0.8863636363636364,
+          "support": 46.0
+        },
+        "Vehicle loan or lease": {
+          "precision": 0.7560975609756098,
+          "recall": 0.8157894736842105,
+          "f1-score": 0.7848101265822784,
+          "support": 76.0
+        },
+        "accuracy": 0.8081603435934145,
+        "macro avg": {
+          "precision": 0.8141995586717091,
+          "recall": 0.708756302305381,
+          "f1-score": 0.7223846745725929,
+          "support": 1397.0
+        },
+        "weighted avg": {
+          "precision": 0.8143604589153218,
+          "recall": 0.8081603435934145,
+          "f1-score": 0.8056496881315668,
+          "support": 1397.0
+        }
+      }
+    }
+  ],
+  "confusion": [
+    [
+      243,
+      17,
+      4,
+      4,
+      0,
+      31,
+      1,
+      1,
+      0,
+      0,
+      3
+    ],
+    [
+      15,
+      234,
+      4,
+      6,
+      0,
+      7,
+      1,
+      3,
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      2,
+      41,
+      3,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      3,
+      13,
+      9,
+      284,
+      0,
+      0,
+      6,
+      4,
+      0,
+      2,
+      10
+    ],
+    [
+      1,
+      6,
+      0,
+      4,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      32,
+      6,
+      0,
+      0,
+      0,
+      78,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      2,
+      0,
+      0,
+      0,
+      100,
+      1,
+      0,
+      1,
+      3
+    ],
+    [
+      4,
+      8,
+      2,
+      1,
+      0,
+      2,
+      3,
+      38,
+      0,
+      0,
+      3
+    ],
+    [
+      6,
+      3,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      8,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      3,
+      0,
+      0,
+      1,
+      1,
+      0,
+      39,
+      0
+    ],
+    [
+      1,
+      1,
+      2,
+      4,
+      0,
+      0,
+      3,
+      3,
+      0,
+      0,
+      62
+    ]
+  ],
+  "split": "Stratified 70/15/15; random_state=42; exact normalized narrative deduplication before splitting. Vectorizer fit on training data only. Baseline chosen by validation macro-F1. No refit on test data.",
+  "limitations": [
+    "CFPB financial-product categories only; not a general-business classifier.",
+    "Random split is not a prospective or temporal evaluation; near-duplicate templates may inflate performance.",
+    "Public, consented narratives are a selected sample. Product recall does not measure demographic fairness.",
+    "Decision margins are not probabilities. Review thresholds are conservative heuristics, not calibrated guarantees.",
+    "Product labels reflect consumer selections; complaints are unverified allegations."
+  ]
+}

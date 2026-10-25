@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About the project — Clearroute</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="masthead">
+      <a class="brand" href="index.html"
+        ><img src="assets/logo.svg" alt="" width="42" height="42" /><span
+          >clearroute<span class="brand-sub">FINANCIAL COMPLAINTS</span></span
+        ></a
+      ><a href="index.html">Back to the desk</a>
+    </header>
+    <div class="navigation-bar">
+      <nav aria-label="Workspace">
+        <button onclick="location.href='index.html#route'">
+          01 &nbsp; Complaint desk</button
+        ><button onclick="location.href='index.html#queue'">
+          02 &nbsp; Review queue</button
+        ><button onclick="location.href='index.html#performance'">
+          03 &nbsp; Performance</button
+        ><button onclick="location.href='index.html#settings'">
+          04 &nbsp; Routing rules
+        </button>
+      </nav>
+    </div>
+    <main id="main">
+      <article class="guide">
+        <p class="eyebrow">PROJECT NOTES</p>
+        <h1>How this desk works<span class="heading-period">.</span></h1>
+        <p class="intro">
+          A supervised text-classification baseline, with the review process
+          kept visible.
+        </p>
+        <h2>From narrative to destination</h2>
+        <p>
+          Clearroute uses the words in a complaint to predict a
+          financial-product category. TF-IDF gives words and pairs of adjacent
+          words numerical weights. A linear support-vector classifier scores
+          each category. The highest score becomes the suggested category; an
+          editable rule maps that category to a team.
+        </p>
+        <p>
+          You review the suggestion before confirming an assignment.
+          Confirmation records a local destination. It does not contact the
+          team, send email, or create a ticket in another system.
+        </p>
+        <h2>The training experiment</h2>
+        <p>
+          The included model was trained on 9,307 unique usable narratives from
+          the CFPB July 2026 archive. Exact normalized duplicate narratives were
+          removed before a stratified split into 6,514 training, 1,396
+          validation, and 1,397 test examples. The vocabulary and IDF were fit
+          only on training text.
+        </p>
+        <p>
+          The experiment compares unigram SVM, unigram–bigram SVM, and
+          class-balanced unigram–bigram SVM against a majority-class baseline.
+          Model selection uses validation macro-F1. The untouched test set is
+          used for the reported evaluation.
+          <a href="index.html#performance">Inspect the actual results</a>.
+        </p>
+        <h2>Why show recall?</h2>
+        <p>
+          Accuracy counts all correct predictions together. Macro-F1 gives each
+          product category equal weight. Recall asks how many complaints
+          belonging to one category the model correctly identifies. Looking at
+          all three reveals weaknesses that an overall accuracy number can
+          obscure.
+        </p>
+        <p>
+          Recall is measured for product labels, not demographic groups. These
+          results do not establish fairness across customer populations. A
+          low-recall warning is based on the predicted category, so it cannot
+          identify every complaint that belongs to a weak category but is
+          predicted as a different one.
+        </p>
+        <h2>What stays on your device</h2>
+        <p>
+          Classification runs in JavaScript inside your browser. The app does
+          not transmit complaint text to a classification service. Queue records
+          and routing settings use session storage in the current browser tab.
+          They are not shared with other users or devices. Export your queue
+          before ending the session if you need a copy.
+        </p>
+        <h2>Use it within its scope</h2>
+        <p>
+          This is an English-language financial-product classifier. It has not
+          been validated for restaurant, retail, or other general-business
+          complaints. SVM scores are not probabilities, and the review
+          thresholds are heuristics. A random test split also does not establish
+          how well the model will perform on future complaints or a different
+          customer population.
+        </p>
+        <p>
+          The public narratives are selected, unverified consumer accounts.
+          Near-duplicate templates may remain after exact deduplication. The
+          July 2026 archive is a fixed snapshot, not a live data feed.
+        </p>
+        <h2>Source &amp; reproducibility</h2>
+        <p>
+          <a
+            href="https://www.consumerfinance.gov/foia-requests/foia-electronic-reading-room/cfpb-consumer-complaint-database-narratives-archive/"
+            target="_blank"
+            rel="noopener"
+            >CFPB narrative archive</a
+          >
+          ·
+          <a href="metrics.json" download
+            >Full evaluation and source checksum</a
+          >
+          · <a href="train.py" download>Training script</a>
+        </p>
+        <p>
+          The complete project package includes the training dependencies, model
+          export code, inference checks, and GitHub deployment guide. The
+          downloadable script belongs in the package’s
+          <code>scripts/</code> directory.
+        </p>
+      </article>
+      <footer>
+        <a href="index.html">Clearroute</a>
+        <p>
+          Financial complaint classification<br />July 2026 training snapshot
+        </p>
+        <a href="index.html">Return to workspace ↗</a>
+      </footer>
+    </main>
+  </body>
+</html>

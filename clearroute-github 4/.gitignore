@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+.DS_Store
+.env
+.env.*
+data/*
+!data/README.md
+scripts/split_ids.json

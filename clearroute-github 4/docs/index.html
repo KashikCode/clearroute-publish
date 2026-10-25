@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#152c46" />
+    <meta
+      name="description"
+      content="A financial complaint routing workbench. Classify narratives, review assignments, and inspect model performance by category."
+    />
+    <title>Clearroute — Complaint desk</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to workspace</a>
+    <header class="masthead">
+      <a class="brand" href="#route" aria-label="Clearroute home"
+        ><img src="assets/logo.svg" alt="" width="42" height="42" /><span
+          >clearroute<span class="brand-sub">FINANCIAL COMPLAINTS</span></span
+        ></a
+      >
+      <div class="masthead-note">
+        <span>Text classification / Human review</span
+        ><strong id="modelState" role="status">Loading model…</strong>
+      </div>
+    </header>
+    <div class="navigation-bar">
+      <nav aria-label="Workspace">
+        <button data-tab="route" class="active">
+          <span class="nav-number">01</span> Complaint desk</button
+        ><button data-tab="queue">
+          <span class="nav-number">02</span> Review queue
+          <span id="queueBadge">0</span></button
+        ><button data-tab="performance">
+          <span class="nav-number">03</span> Performance</button
+        ><button data-tab="settings">
+          <span class="nav-number">04</span> Routing rules
+        </button>
+      </nav>
+      <span class="session-label">LOCAL SESSION</span>
+    </div>
+    <main id="main">
+      <section id="route" class="page active" aria-label="Complaint desk">
+        <div class="pageheading">
+          <div>
+            <p class="eyebrow">
+              WORKSPACE / <span id="pageLabel">Complaint desk</span>
+            </p>
+            <h1>Complaint desk<span class="heading-period">.</span></h1>
+            <p class="intro">
+              Read the complaint. Check the category. Choose the team.
+            </p>
+          </div>
+          <p class="heading-aside">
+            For financial services.<br />Every assignment stays under your
+            review.
+          </p>
+        </div>
+        <div class="stats" aria-label="Model summary">
+          <div>
+            <strong id="classCount">—</strong><span>Product categories</span>
+          </div>
+          <div>
+            <strong id="macroScore">—</strong><span>Macro-F1 / test set</span>
+          </div>
+          <div class="weakest">
+            <strong id="minRecall">—</strong
+            ><span
+              >Lowest recall <small id="minLabel">Loading category</small></span
+            >
+          </div>
+          <a href="#performance"
+            >Read the evaluation <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="route-grid">
+          <div class="compose">
+            <div class="panel-title">
+              <h2><span>01 /</span> Incoming complaint</h2>
+              <span class="muted">TEXT INPUT</span>
+            </div>
+            <div class="cardbody">
+              <label for="complaint">Customer’s account</label>
+              <p class="fieldhint">
+                Paste the original description, without names or account
+                numbers.
+              </p>
+              <textarea
+                id="complaint"
+                maxlength="20000"
+                placeholder="Describe what happened, which product was involved, and what the customer has already tried."
+              ></textarea>
+              <div class="inputmeta">
+                <span>English · financial products</span
+                ><span id="charCount">0 / 20,000</span>
+              </div>
+              <div class="examples">
+                <span>Sample complaints</span
+                ><button data-example="0">Account fees</button
+                ><button data-example="1">Credit reporting</button
+                ><button data-example="2">Debt collection</button>
+              </div>
+              <div class="composefooter">
+                <span class="privacy"
+                  >Processed on this device.<br />No complaint text is sent to a
+                  server.</span
+                ><button id="analyze" class="primary" disabled>
+                  Classify complaint <span aria-hidden="true">→</span>
+                </button>
+              </div>
+              <p id="inputError" role="alert" class="error"></p>
+            </div>
+            <div class="batch-callout">
+              <div>
+                <h3>Working through a list?</h3>
+                <p>Import up to 500 complaints from a CSV file.</p>
+                <a href="sample-complaints.csv" download
+                  >Download a sample CSV</a
+                >
+              </div>
+              <button class="secondary" id="batchOpen">Import CSV</button
+              ><input type="file" id="csvFile" accept=".csv,text/csv" hidden />
+            </div>
+            <div id="batchStatus" role="status"></div>
+          </div>
+          <aside class="result-card" aria-label="Classification result">
+            <div class="panel-title">
+              <h2><span>02 /</span> Suggested route</h2>
+              <span class="muted">AWAITING INPUT</span>
+            </div>
+            <div id="result" class="resultbody" aria-live="polite">
+              <div class="empty-result">
+                <span class="empty-index">—</span>
+                <h3>No complaint classified.</h3>
+                <p>
+                  Your result will include a product category, a team
+                  destination, and the terms that influenced the model.
+                </p>
+                <dl>
+                  <div>
+                    <dt>Category</dt>
+                    <dd>Not yet determined</dd>
+                  </div>
+                  <div>
+                    <dt>Destination</dt>
+                    <dd>Pending review</dd>
+                  </div>
+                  <div>
+                    <dt>Assignment</dt>
+                    <dd>Requires your confirmation</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+            <div class="result-bottom">
+              A prediction is a starting point. Review the customer’s full
+              account before assigning it.
+            </div>
+          </aside>
+        </div>
+        <div class="footnote">
+          <span class="note-label">MODEL NOTE</span>
+          <p>
+            Overall accuracy can hide missed categories. This desk surfaces
+            per-category recall alongside each recommendation. Product
+            categories do not measure demographic fairness.
+          </p>
+          <a href="#performance">Inspect results ↗</a>
+        </div>
+      </section>
+      <section id="queue" class="page" aria-label="Review queue">
+        <div class="pageheading">
+          <div>
+            <p class="eyebrow">WORKSPACE / 02</p>
+            <h1>Review queue<span class="heading-period">.</span></h1>
+            <p class="intro">
+              Check the customer’s words before confirming a destination.
+            </p>
+          </div>
+          <button class="secondary" id="exportQueue">Export CSV ↓</button>
+        </div>
+        <div class="toolbar">
+          <input
+            id="queueSearch"
+            placeholder="Search complaints, categories, or teams"
+            aria-label="Search queue"
+          /><select id="queueFilter" aria-label="Filter queue">
+            <option value="all">All complaints</option>
+            <option value="review">Needs review</option>
+            <option value="assigned">Assigned</option></select
+          ><span id="queueCount"></span>
+        </div>
+        <div id="queueList"></div>
+        <div class="queue-footer">
+          <p class="subnote">
+            Saved in this browser tab’s session. Export to keep a copy.
+            Confirming a team records an assignment here; it does not send an
+            email or create a ticket.
+          </p>
+          <button id="clearQueue" class="textbutton">
+            Clear session queue
+          </button>
+        </div>
+      </section>
+      <section id="performance" class="page" aria-label="Model performance">
+        <div class="pageheading">
+          <div>
+            <p class="eyebrow">WORKSPACE / 03</p>
+            <h1>Performance<span class="heading-period">.</span></h1>
+            <p class="intro">
+              A category-by-category account of what the model gets right—and
+              misses.
+            </p>
+          </div>
+          <a class="secondary" href="metrics.json" download
+            >Download report ↓</a
+          >
+        </div>
+        <div id="performanceContent"></div>
+      </section>
+      <section id="settings" class="page" aria-label="Routing rules">
+        <div class="pageheading">
+          <div>
+            <p class="eyebrow">WORKSPACE / 04</p>
+            <h1>Routing rules<span class="heading-period">.</span></h1>
+            <p class="intro">
+              Set destinations and decide which predictions need extra
+              attention.
+            </p>
+          </div>
+          <button id="saveRules" class="primary" disabled>Save rules</button>
+        </div>
+        <div class="card rules-intro">
+          <h2>Review thresholds</h2>
+          <p>
+            A warning appears when any check fails. These are adjustable
+            heuristics, not calibrated probability guarantees.
+          </p>
+          <div class="rule-fields">
+            <label
+              >Minimum score gap<input
+                id="gapRule"
+                type="number"
+                min="0"
+                max="5"
+                step="0.05"
+                required /></label
+            ><label
+              >Minimum category recall<input
+                id="recallRule"
+                type="number"
+                min="0"
+                max="1"
+                step="0.05"
+                required /></label
+            ><label
+              >Minimum term coverage<input
+                id="coverageRule"
+                type="number"
+                min="0"
+                max="1"
+                step="0.05"
+                required
+            /></label>
+          </div>
+          <p class="subnote">
+            Score gap is the difference between the top two SVM scores. Term
+            coverage is the share of input tokens in the vocabulary. Inputs
+            shorter than eight words always trigger a warning. Off-topic
+            complaints can still be misclassified.
+          </p>
+        </div>
+        <div class="sectiontitle">
+          <h2>Category destinations</h2>
+          <span>Editable team names</span>
+        </div>
+        <div id="ruleRows" class="card"></div>
+        <p id="savedStatus" role="status"></p>
+      </section>
+      <footer>
+        <a href="#route">Clearroute</a>
+        <p>
+          CFPB narrative archive · July 2026<br />Browser-based classification.
+          Human-confirmed assignments.
+        </p>
+        <a href="guide.html">About this project ↗</a>
+      </footer>
+    </main>
+    <div id="toast" role="status"></div>
+    <script src="classifier.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
