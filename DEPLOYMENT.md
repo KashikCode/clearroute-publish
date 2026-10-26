@@ -1,18 +1,4 @@
-# GitHub Pages deployment for the downloadable project
-
-## What developers normally do
-
-1. Edit files in a code editor such as VS Code on their computer.
-2. Run and test the app locally.
-3. Use Git to save a meaningful version (a commit).
-4. Push commits to GitHub, which stores the repository.
-5. A hosting service publishes the app. For this static app, GitHub Pages is sufficient.
-
-GitHub Desktop is a separate Mac application that gives Git a visual interface. GitHub.com is a website. Chrome's File menu is not GitHub Desktop's File menu. You can edit small files on GitHub.com, and Codespaces offers a cloud development environment, but editing locally is a straightforward workflow for this project.
-
-## Update the existing KashikCode/clearroute repository
-
-Do not create another repository if you already have this one.
+## Instructions to make your own clearroute for local use
 
 1. Download and unzip the complete project archive.
 2. Open the installed GitHub Desktop app. Sign in as the repository owner.
@@ -24,8 +10,6 @@ Do not create another repository if you already have this one.
 8. In GitHub Desktop, review Changes. Enter `Redesign Clearroute interface` in Summary and click Commit to main. Click Push origin (or Publish branch if this is the first branch publication).
 9. On GitHub.com open the repository, then Settings > Pages. Set Source to Deploy from a branch, Branch to main, Folder to /docs, and Save. For a free personal GitHub account, use a public repository for Pages.
 10. Wait for GitHub's Pages deployment and use the Visit site link shown there. The expected URL pattern is https://KashikCode.github.io/clearroute/, but the settings page is authoritative. This guide does not imply that the repository or Pages site has already been updated.
-
-You do not need npm, a build command, a Flask backend, or GitHub Actions for deployment. Python training does not run on GitHub Pages: you train locally and push the generated JSON files. GitHub Pages serves the files in docs/.
 
 ## Later updates
 
