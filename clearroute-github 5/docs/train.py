@@ -23,7 +23,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'docs'
+OUT = ROOT / 'dist'
 SOURCE_URL = 'https://files.consumerfinance.gov/f/documents/CCDB_Export_20_July_2026.zip'
 ARCHIVE_URL = 'https://www.consumerfinance.gov/foia-requests/foia-electronic-reading-room/cfpb-consumer-complaint-database-narratives-archive/'
 SEED = 42
@@ -178,7 +178,7 @@ def main():
     shutil.copyfile(__file__, OUT / 'train.py')
     selected = next(report for report in reports if report['name'] == name)
     print(f'Selected: {name}; test accuracy: {selected["accuracy"]:.4f}; test macro-F1: {selected["macro_f1"]:.4f}')
-    print('Updated docs/model.json and docs/metrics.json. Restart or refresh your local preview.')
+    print('Updated dist/model.json and dist/metrics.json. Restart or refresh your local preview.')
 
 
 if __name__ == '__main__':

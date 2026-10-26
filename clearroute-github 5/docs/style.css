@@ -2,14 +2,14 @@
 :root {
   --navy: #152c46;
   --blue: #152c46;
-  --sky: #dceaf4;
-  --paper: #f8fafb;
+  --sky: #eef4f8;
+  --paper: #ffffff;
   --ink: #151719;
   --muted: #566574;
-  --line: #b9c7d1;
-  --brown: #78503b;
-  --green: #285c49;
-  --amber: #7a4c20;
+  --line: #dde4e9;
+  --accent: #246451;
+  --green: #246451;
+  --amber: #ad4b13;
 }
 * {
   box-sizing: border-box;
@@ -79,7 +79,7 @@ small {
   display: block;
 }
 .heading-period {
-  color: var(--brown);
+  color: var(--accent);
 }
 .skip-link {
   position: absolute;
@@ -106,7 +106,7 @@ small {
   align-items: center;
   gap: 15px;
   text-decoration: none;
-  color: var(--brown);
+  color: var(--accent);
   font:
     32px/1 Georgia,
     "Times New Roman",
@@ -264,7 +264,7 @@ main {
 .stats small {
   font-size: 10px;
   margin-top: 3px;
-  color: var(--brown);
+  color: var(--accent);
   max-width: 190px;
 }
 .stats > a {
@@ -304,7 +304,7 @@ main {
   font:
     11px "Courier New",
     monospace;
-  color: var(--brown);
+  color: var(--accent);
   margin-right: 9px;
 }
 .muted {
@@ -375,8 +375,8 @@ select:focus {
   font-size: 10px;
 }
 .examples button:hover {
-  border-color: var(--brown);
-  color: var(--brown);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .composefooter {
   display: flex;
@@ -521,7 +521,7 @@ select:focus {
     monospace;
   letter-spacing: 1px;
   white-space: nowrap;
-  color: var(--brown);
+  color: var(--accent);
 }
 .footnote p {
   font-size: 11px;
@@ -548,7 +548,7 @@ footer > a:first-child {
     22px Georgia,
     serif;
   text-decoration: none;
-  color: var(--brown);
+  color: var(--accent);
 }
 footer p {
   font:
@@ -578,8 +578,8 @@ footer > a:last-child {
   letter-spacing: 0.4px;
 }
 .badge.review {
-  color: var(--brown);
-  border-color: var(--brown);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 .result-eyebrow {
   font:
@@ -665,11 +665,11 @@ footer > a:last-child {
   padding: 5px 7px;
 }
 .reviewreasons {
-  border-left: 2px solid var(--brown);
+  border-left: 2px solid var(--accent);
   padding: 4px 0 4px 13px;
   font-size: 11px;
   line-height: 1.8;
-  color: #654834;
+  color: #99501e;
   margin: 17px 0;
 }
 .altlist {
@@ -701,8 +701,8 @@ footer > a:last-child {
 }
 .loading-error {
   padding: 15px;
-  border-left: 2px solid var(--brown);
-  color: var(--brown);
+  border-left: 2px solid var(--accent);
+  color: var(--accent);
 }
 .toolbar {
   display: flex;
@@ -772,7 +772,7 @@ select {
 }
 .textbutton {
   font-size: 11px;
-  color: var(--brown);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
   padding: 0;
@@ -893,10 +893,10 @@ tr:last-child td {
   margin-top: 8px;
 }
 .low td {
-  background: #f5eee9;
+  background: #fff8f0;
 }
 .low .signalbar span {
-  background: var(--brown);
+  background: var(--accent);
 }
 .method-grid {
   display: grid;
@@ -1312,4 +1312,95 @@ tr:last-child td {
       background-color 0.15s,
       color 0.15s;
   }
+}
+
+/* Spacious workspace: white canvas, a quiet result column, and functional color. */
+.brand, footer > a:first-child { color: var(--navy); }
+.heading-period { color: var(--green); }
+.masthead { height: 120px; }
+.navigation-bar { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.navigation-bar button { color: #526171; height: 64px; }
+.navigation-bar button:hover { color: var(--navy); }
+.navigation-bar button.active { color: var(--navy); border-bottom-color: var(--green); }
+.nav-number, .session-label { color: #657681; }
+#queueBadge { background: #edf4f0; color: var(--green); }
+main { padding-top: 62px; }
+.pageheading { margin-bottom: 48px; }
+h1 { font-size: 54px; }
+.intro { margin-top: 20px; line-height: 1.9; }
+.heading-aside { font-family: Arial, Helvetica, sans-serif; line-height: 2; }
+.stats { border-top: 0; margin-bottom: 52px; padding-bottom: 14px; min-height: 96px; }
+.stats > div { gap: 20px; }
+.stats small { color: var(--amber); }
+.route-grid { grid-template-columns: 1.15fr 1fr; gap: 64px; }
+.panel-title { padding-bottom: 22px; }
+.panel-title h2 > span { color: var(--green); }
+.cardbody { padding-top: 30px; }
+.fieldhint { margin: 10px 0 22px; line-height: 1.8; }
+textarea { min-height: 220px; border-color: #b9c7d1; padding: 22px; line-height: 1.9; }
+.examples { margin-top: 26px; gap: 15px; }
+.composefooter { margin: 32px 0 36px; }
+.primary { padding: 14px 22px; }
+.batch-callout { padding-top: 28px; }
+.batch-callout h3 { font-size: 21px; }
+.batch-callout p { margin: 8px 0; }
+.result-card { background: #f5f8fa; border-top: 2px solid var(--navy); padding: 30px 32px 24px; }
+.result-card .panel-title { border-color: #d9e2e8; }
+.resultbody { padding-top: 30px; }
+.result-bottom { margin-top: 36px; padding-top: 20px; border-color: #d9e2e8; line-height: 1.9; }
+.empty-index { color: #a5b7c4; }
+.empty-result h3 { margin-top: 27px; margin-bottom: 18px; }
+.empty-result p { line-height: 2; max-width: 300px; }
+.empty-result dl { margin-top: 40px; }
+.empty-result dl div { padding: 16px 0; border-color: #dce5ea; }
+.team-box { background: #eaf3ef; border-left: 2px solid var(--green); padding: 19px; margin: 25px 0; }
+.team-box > span, .team-box strong { color: var(--green); }
+.badge { color: var(--green); border-color: var(--green); }
+.badge.review { color: var(--amber); border-color: var(--amber); }
+.reviewreasons { border-color: #d77936; color: #914713; padding: 6px 0 6px 16px; line-height: 1.9; }
+.terms span { background: #e8eef3; }
+.signalbar { background: #dce6ed; }
+.signalbar span { background: #335974; }
+.low .signalbar span { background: #d77936; }
+.footnote { margin-top: 50px; padding: 27px 0; gap: 28px; }
+.note-label { color: var(--navy); }
+footer { margin-top: 45px; padding-top: 30px; border-color: var(--line); }
+.metrics-grid { border-top: 0; margin-bottom: 48px; }
+.metric-card { padding-top: 12px; padding-bottom: 28px; }
+.sectiontitle { margin-top: 40px; margin-bottom: 22px; }
+th, td { padding: 20px 24px; }
+.method-grid { margin-top: 48px; gap: 44px; }
+.method { padding: 27px 0; border-top: 1px solid var(--line); }
+.method h2 { margin-bottom: 22px; }
+.rules-intro { background: #f4f8fa; padding: 32px; }
+.rule-row { padding: 22px 28px; }
+.queue-item { padding: 30px; margin-bottom: 22px; }
+.emptyqueue { background: #f4f8fa; padding: 80px 25px; }
+.guide p, .guide li { line-height: 2; }
+.guide h2 { margin-top: 48px; }
+@media (max-width: 1100px) {
+ main { padding-top: 42px; }
+ .route-grid { gap: 32px; }
+ .result-card { padding: 26px; }
+ .composefooter .primary { padding: 13px 16px; }
+}
+@media (max-width: 760px) {
+ .masthead { height: 100px; }
+ .navigation-bar button { height: 56px; }
+ main { padding-top: 38px; }
+ h1 { font-size: 42px; }
+ .pageheading { margin-bottom: 30px; }
+ .stats { margin-bottom: 36px; padding-bottom: 8px; }
+ .route-grid { grid-template-columns: 1fr; gap: 40px; }
+ .cardbody { padding-top: 25px; }
+ textarea { min-height: 210px; padding: 18px; }
+ .result-card { padding: 25px; }
+ .empty-result h3 { margin-top: 5px; }
+ .empty-result p { max-width: none; }
+ .empty-result dl { margin-top: 28px; }
+ .footnote { margin-top: 36px; gap: 16px; }
+ .rule-row { padding: 20px; }
+ .queue-item { padding: 22px; }
+ .rules-intro { padding: 24px; }
+ .method-grid { gap: 15px; }
 }

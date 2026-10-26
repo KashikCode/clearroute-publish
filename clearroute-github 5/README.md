@@ -1,6 +1,6 @@
 # Clearroute
 
-A financial complaint classification workbench with four application screens: Complaint desk, Review queue, Performance, and Routing rules. The design uses navy and light blue, black body text, and a brown/navy SVG logo. No framework, build step, remote font, API key, or server-side prediction service is needed.
+A financial complaint classification workbench with four application screens: Complaint desk, Review queue, Performance, and Routing rules. The design uses navy and white, black body text, restrained green/orange accents, and a navy/green SVG logo. No framework, build step, remote font, API key, or server-side prediction service is needed.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ The script opens your browser automatically. Keep this terminal running; pressin
 - `docs/style.css`: colors, typography, spacing, and responsive layouts.
 - `docs/app.js`: screen navigation, escaped rendering, CSV handling, session queue, and team rules.
 - `docs/classifier.js`: browser text preprocessing, TF-IDF transformation, and linear SVM inference.
-- `docs/assets/logo.svg`: editable brown/navy vector logo and favicon.
+- `docs/assets/logo.svg`: editable navy/green vector logo and favicon.
 - `docs/model.json`: generated trained coefficients, vocabulary, and IDF.
 - `docs/metrics.json`: actual held-out metrics and source provenance.
 - `docs/parity.json`: authored examples and reference Python scores used by tests.
@@ -33,7 +33,7 @@ The script opens your browser automatically. Keep this terminal running; pressin
 - `MODEL_CARD.md`: scope, measured results, and methodological limitations.
 - `.gitignore`: excludes raw data, environments, and local outputs.
 
-This package is ready for GitHub Pages: publish from main /docs. See DEPLOYMENT.md for exact Mac instructions.
+The GitHub distribution uses `docs/`, so GitHub Pages can publish directly from main /docs. All scripts in that ZIP are adjusted to the docs folder.
 
 ## Train and test
 
@@ -58,6 +58,6 @@ Browser smoke test: classify Account fees, add to review queue, correct a catego
 
 ## Design and architecture
 
-Color tokens live at the top of style.css: navy #152c46, light blue #dceaf4, ink #151719, brown #78503b. The four main screens are sections inside one HTML file; hash navigation switches visibility without reloading the model. A second HTML page documents the project. JavaScript code is formatted for reading and editing.
+Color tokens live at the top of style.css: navy #152c46, white #ffffff, pale blue #eef4f8, ink #151719, green #246451, orange #ad4b13. The four main screens are sections inside one HTML file; hash navigation switches visibility without reloading the model. A second HTML page documents the project. JavaScript code is formatted for reading and editing.
 
 The two-stage system predicts a financial product then maps it to an editable team. It does not classify arbitrary business complaints or send messages. All assignments require user confirmation. Browser session storage is not a shared or durable backend. Read MODEL_CARD.md before interpreting performance.
